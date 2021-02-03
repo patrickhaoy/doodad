@@ -2,6 +2,7 @@ from doodad.easy_launch.python_function import run_experiment
 
 
 def example(doodad_config, variant):
+    print(doodad_config)
     print(variant)
 
 

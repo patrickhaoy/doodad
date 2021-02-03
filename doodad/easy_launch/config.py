@@ -73,8 +73,8 @@ SLURM_CONFIGS = dict(
 )
 # This is necessary for the GPU machines on BRC.
 BRC_EXTRA_SINGULARITY_ARGS = '--writable -B /usr/lib64 -B /var/lib/dcv-gl'
-# Make sure this points to wherever you copy your taskfile to on BRC.
-TASKFILE_PATH_ON_BRC = 'TODO'
+# Point to some directory on slurm where tasks will be copied to
+TASKFILE_DIR_ON_BRC = 'TODO'
 
 
 # This is the same as `CODE_DIRS_TO_MOUNT` but the paths should be relative to

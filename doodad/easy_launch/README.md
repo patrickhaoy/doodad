@@ -211,7 +211,7 @@ rsync -rtv -e 'ssh' --exclude='*.simg' --exclude='*.img' --exclude='.git/' --exc
 rsync -rtv -e 'ssh' --exclude='*.simg' --exclude='*.img' --exclude='.git/' --exclude='.idea/' --exclude='*/__pycache__/' --exclude='*.pyc' --include='*/' --include='*.py' vitchyr@$COMPUTER_URL:/home/vitchyr    /git/multiworld/ /global/home/users/vitchyr/git/multiworld/
 
 scp vitchyr@$COMPUTER_URL:/tmp/script_to_scp_over.sh /global/scratch/vitchyr/logs/script_to_scp_over.sh
-scp vitchyr@$COMPUTER_URL:/tmp/taskfile_from_doodad.sh /global/scratch/vitchyr/logs/taskfile_from_doodad.sh
+scp vitchyr@$COMPUTER_URL:/tmp10taskfile_from_doodad.sh /global/scratch/vitchyr/logs/taskfile_from_doodad.sh
 ```
 It's important that I copy the code over to the same location that's specified in `SSS_CODE_DIRS_TO_MOUNT`, and that I `scp` the task script to the same path as `TASKFILE_PATH_ON_BRC`.
 

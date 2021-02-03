@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import subprocess
 import tempfile
 import uuid
@@ -934,23 +935,29 @@ class BrcHighThroughputMode(SingularityMode):
     """
     Create or add to a script to run a bunch of slurm jobs.
     """
-    TASK_FILE = '/tmp/taskfile_from_doodad.sh'
+    TASK_FILE_DIR = '/tmp/taskfiles_from_doodad/'
+    TASK_FILE = None
     SBATCH_FILE = '/tmp/script_to_scp_over.sh'
 
     def __init__(
             self,
             slurm_config,
-            taskfile_path_on_brc,
+            taskfile_dir_on_brc,
             n_tasks_total,
             overwrite_task_script=False,
+            launch_id=None,
             *args,
             **kwargs
     ):
         super(BrcHighThroughputMode, self).__init__(*args, **kwargs)
+        Path(self.TASK_FILE_DIR).mkdir(parents=True, exist_ok=True)
         self._overwrite_task_script = overwrite_task_script
-        self._taskfile_path_on_brc = taskfile_path_on_brc
+        self._taskfile_dir_on_brc = taskfile_dir_on_brc
         self._slurm_config = slurm_config
         self._n_tasks_total = n_tasks_total
+        if launch_id is None:
+            launch_id = str(uuid.uuid4())
+        self._filename = 'task_{}.sh'.format(launch_id)
 
     def launch_command(
             self,
@@ -960,9 +967,11 @@ class BrcHighThroughputMode(SingularityMode):
             verbose=False,
     ):
         full_cmd = self.create_singularity_cmd(cmd, mount_points=mount_points)
+        local_path = os.path.join(self.TASK_FILE_DIR, self._filename)
+        brc_path = os.path.join(self._taskfile_dir_on_brc, self._filename)
         utils.add_to_script(
             full_cmd,
-            path=self.TASK_FILE,
+            path=local_path,
             verbose=True,
             overwrite=self._overwrite_task_script,
         )
@@ -970,7 +979,7 @@ class BrcHighThroughputMode(SingularityMode):
         cmd_list = utils.CommandBuilder()
         cmd_list.append('module load gcc openmpi')
         cmd_list.append('ht_helper.sh -m "python/3.5" -t {}'.format(
-            self._taskfile_path_on_brc))
+            brc_path))
         sbatch_cmd = slurm_util.wrap_command_with_sbatch(
             cmd_list.to_string(),
             self._slurm_config,
