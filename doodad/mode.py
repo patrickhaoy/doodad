@@ -944,9 +944,10 @@ class BrcHighThroughputMode(SingularityMode):
             slurm_config,
             taskfile_dir_on_brc,
             n_tasks_total,
+            *args,
             overwrite_task_script=False,
             launch_id=None,
-            *args,
+            sbatch_file=None,
             **kwargs
     ):
         super(BrcHighThroughputMode, self).__init__(*args, **kwargs)
@@ -958,6 +959,7 @@ class BrcHighThroughputMode(SingularityMode):
         if launch_id is None:
             launch_id = str(uuid.uuid4())
         self._filename = 'task_{}.sh'.format(launch_id)
+        self._sbatch_file = sbatch_file or self.SBATCH_FILE
 
     def launch_command(
             self,
@@ -987,7 +989,7 @@ class BrcHighThroughputMode(SingularityMode):
         )
         utils.add_to_script(
             sbatch_cmd,
-            path=self.SBATCH_FILE,
+            path=self._sbatch_file,
             verbose=True,
             overwrite=True,
         )
@@ -1038,10 +1040,12 @@ class ScriptSlurmSingularity(SlurmSingularity):
             image,
             slurm_config,
             overwrite_script=False,
+            sbatch_file=None,
             **kwargs
     ):
         super().__init__(image, slurm_config, **kwargs)
         self._overwrite_script = overwrite_script
+        self._sbatch_file = sbatch_file or self.TMP_FILE
 
     def launch_command(
             self,
@@ -1054,7 +1058,7 @@ class ScriptSlurmSingularity(SlurmSingularity):
         # full_cmd = self.create_singularity_cmd(cmd, mount_points=mount_points)
         utils.add_to_script(
             full_cmd,
-            path=self.TMP_FILE,
+            path=self._sbatch_file,
             verbose=True,
             overwrite=self._overwrite_script,
         )
