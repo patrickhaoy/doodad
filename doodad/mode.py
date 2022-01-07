@@ -94,6 +94,11 @@ class DockerMode(LaunchMode):
                        post_cmd=None,
                        checkpoint=False, no_root=False,
                        use_docker_generated_name=False):
+        ## HARDCODE
+        # import pdb; pdb.set_trace()
+        # main_cmd = main_cmd[:-51] + 'echo \"Test3 \"; ls /mounts/target/easy_launch; python /mounts/target/easy_launch/run_experiment.py'
+        #main_cmd = main_cmd[:-51] + 'echo \"START0 \"; /tmp/doodad-output; echo \"START1 \"; ls /home/patrickhaoy/code; echo \"START2 \"; ls /home/patrickhaoy/code/railrl-private; echo \"START3 \"; ls /mounts/target/easy_launch'
+        #main_cmd = main_cmd[:-51] + 'echo \"START0 \"; ls /tmp/doodad-output; echo \"START1 \"; ls /home/patrickhaoy/code; echo \"START2 \"; ls /home/patrickhaoy/code/railrl-private; echo \"START3 \"; ls /mounts/target/easy_launch'
         cmd_list = utils.CommandBuilder()
         if pre_cmd:
             cmd_list.extend(pre_cmd)
