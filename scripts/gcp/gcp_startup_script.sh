@@ -40,10 +40,11 @@ query_metadata() {
 
     sudo apt-get update
     #install_docker
-    while sudo fuser /var/{lib/{dpkg,apt/lists},cache/apt/archives}/lock >/dev/null 2>&1; do
-        sleep 1
-    done
-    sudo apt-get install -y jq git unzip
+    # while sudo fuser /var/{lib/{dpkg,apt/lists},cache/apt/archives}/lock >/dev/null 2>&1; do
+    #     sleep 1
+    # done
+    sleep 360
+    sudo apt-get install -y jq #git unzip
     die() { status=$1; shift; echo "FATAL: $*"; exit $status; }
     service docker start
     docker --config /home/ubuntu/.docker pull $docker_image

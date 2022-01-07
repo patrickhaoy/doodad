@@ -95,6 +95,7 @@ def run_experiment(
         gcp_kwargs=None,
         s3_log_prefix=None,
         s3_log_name="",
+        **kwargs,
 ):
     """
     Usage:

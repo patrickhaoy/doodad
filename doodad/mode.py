@@ -128,7 +128,7 @@ class DockerMode(LaunchMode):
             extra_args += ' -d '  # detach is optional
 
         if self.gpu:
-            docker_run = 'docker run --gpus all'
+            docker_run = 'nvidia-docker run' #'docker run --gpus all'
         else:
             docker_run = 'docker run'
         if use_tty:
@@ -737,6 +737,8 @@ class GCPDocker(DockerMode):
         gcp_mount_info = []
         local_mounts = []
         for mount in mount_points:
+            # if mount.mount_point == "target/easy_launch":
+            #     import pdb; pdb.set_trace()
             print('Handling mount: ', mount)
             if isinstance(mount,
                           MountLocal):  # TODO: these should be mount_s3 objects
@@ -1033,7 +1035,7 @@ class ScriptSlurmSingularity(SlurmSingularity):
     """
     Create or add to a script to run a bunch of slurm jobs.
     """
-    TMP_FILE = '/tmp/script_to_scp_over.sh'
+    TMP_FILE = '/home/patrickhaoy/code/script_to_scp_over.sh'
 
     def __init__(
             self,
