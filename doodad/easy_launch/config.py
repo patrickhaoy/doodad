@@ -31,14 +31,14 @@ AWS_S3_PATH="s3://s3doodad/doodad/logs"
 # You probably don't need to change things below
 # Specifically, the docker image is looked up on dockerhub.com.
 # DOODAD_DOCKER_IMAGE = "anair17/railrl-hand-tf-v1"
-DOODAD_DOCKER_IMAGE = "anair17/railrl-dice-v1" # 'anair17/railrl-hand-v3' # 'anair17/railrl-gpu-v7a' # 'anair17/railrl-gpu-v6-cuda9' # 'anair17/railrl-gpu-v6' # 'vitchyr/railrl-vitchyr-gpu-v2-2'
+DOODAD_DOCKER_IMAGE = "patrickhaoy/railrl-planning-v7" #"anair17/railrl-dice-v1" # 'anair17/railrl-hand-v3' # 'anair17/railrl-gpu-v7a' # 'anair17/railrl-gpu-v6-cuda9' # 'anair17/railrl-gpu-v6' # 'vitchyr/railrl-vitchyr-gpu-v2-2'
 # DOODAD_DOCKER_IMAGE = "snasiriany/railrl-lha-v4" #
 # DOODAD_DOCKER_IMAGE = "anair17/railrl-gpu-v3"
 INSTANCE_TYPE = 'c4.large'
 SPOT_PRICE = 0.1
 SPOT_PRICE_LOOKUP = {'c4.large': 0.1, 'm4.large': 0.1, 'm4.xlarge': 0.2, 'm4.2xlarge': 0.4}
 # GPU_DOODAD_DOCKER_IMAGE = "anair17/railrl-hand-v3"
-GPU_DOODAD_DOCKER_IMAGE = "anair17/railrl-dice-v1" # "anair17/borel-v2" #
+GPU_DOODAD_DOCKER_IMAGE = "patrickhaoy/railrl-planning-v7" #"anair17/railrl-dice-v1" # "anair17/borel-v2" #
 # GPU_DOODAD_DOCKER_IMAGE = "anair17/railrl-hand-tf-v1"
 # GPU_DOODAD_DOCKER_IMAGE = 'anair17/railrl-hand-v3' # 'anair17/railrl-hand-v1a' # 'anair17/railrl-gpu-v7a' # 'anair17/railrl-gpu-v6-cuda9' #  # 'vitchyr/railrl-vitchyr-gpu-v3'
 # GPU_DOODAD_DOCKER_IMAGE = "snasiriany/railrl-lha-v4" #
