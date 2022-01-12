@@ -347,8 +347,11 @@ def run_experiment(
 
         if gcp_kwargs is None:
             gcp_kwargs = {}
+        d = config.GCP_DEFAULT_KWARGS.copy()
+        if region != None:
+            d['zone'] = region
         config_kwargs = {
-            **config.GCP_DEFAULT_KWARGS,
+            **d,
             **dict(image_name=image_name),
             **gcp_kwargs
         }
