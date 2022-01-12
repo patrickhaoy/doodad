@@ -307,6 +307,7 @@ GCP_BUCKET_NAME = 'patrick-ssl-gcp-bucket'
 GCP_DEFAULT_KWARGS = dict(
     zone='us-west1-b',
     instance_type='n1-highmem-8',
+    disk_size=192,
     image_project='fit-oasis-315121',
     terminate=True,
     preemptible=True,  # is much more expensive!
