@@ -21,6 +21,14 @@ CODE_DIRS_TO_MOUNT = [
     '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj/td_pnp_goals_seed1.pkl',
     '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj/best_vqvae.pt',
 ]
+# ] + [
+#     '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj_place/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj_place_demos_{}.pkl'.format(i)
+#     for i in range(40)
+# ] + [
+#     '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj_place/td_pnp_goals_seed0.pkl',
+#     '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj_place/td_pnp_goals_seed1.pkl',
+#     '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj_place/best_vqvae.pt',
+# ]
 NON_CODE_DIRS_TO_MOUNT = [
 ]
 DIR_AND_MOUNT_POINT_MAPPINGS = [
@@ -309,6 +317,7 @@ GCP_BUCKET_NAME = 'patrick-gcp-bucket'
 GCP_DEFAULT_KWARGS = dict(
     zone='us-west1-b',
     instance_type='n1-highmem-8',
+    disk_size=192,
     image_project='ashvin-val',
     terminate=True,
     preemptible=True,  # is much more expensive!
