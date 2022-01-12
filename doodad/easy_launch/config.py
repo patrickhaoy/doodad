@@ -13,7 +13,13 @@ CODE_DIRS_TO_MOUNT = [
     '/home/patrickhaoy/code/bullet-manipulation-affordances',
     '/home/patrickhaoy/code/bullet-manipulation-affordances/roboverse/envs/assets/bullet-objects',
     '/home/patrickhaoy/code/rllab',
-    '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_small'
+] + [
+    '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj_demos_{}.pkl'.format(i)
+    for i in range(12)
+] + [
+    '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj/td_pnp_goals_seed0.pkl',
+    '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj/td_pnp_goals_seed1.pkl',
+    '/2tb/home/patrickhaoy/data/affordances/data/antialias_reset_free_rotated_semicircle_top_drawer_pnp_v2_single_obj/best_vqvae.pt',
 ]
 NON_CODE_DIRS_TO_MOUNT = [
 ]
@@ -302,7 +308,7 @@ GCP_GPU_IMAGE_NAME = 'ashvin-torch4cuda9'
 GCP_BUCKET_NAME = 'patrick-gcp-bucket'
 GCP_DEFAULT_KWARGS = dict(
     zone='us-west1-b',
-    instance_type='n1-standard-4',
+    instance_type='n1-highmem-8',
     image_project='ashvin-val',
     terminate=True,
     preemptible=True,  # is much more expensive!
