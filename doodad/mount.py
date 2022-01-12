@@ -37,7 +37,7 @@ class Mount(object):
 class MountLocal(Mount):
     def __init__(self, local_dir, mount_point=None, cleanup=True,
                 filter_ext=('.pyc', '.log', '.git', '.mp4', '.idea'),
-                filter_dir=('data',),
+                filter_dir=(),#filter_dir=('data',),
                 **kwargs):
         super(MountLocal, self).__init__(mount_point=mount_point, **kwargs)
         self.local_dir = os.path.realpath(os.path.expanduser(local_dir))

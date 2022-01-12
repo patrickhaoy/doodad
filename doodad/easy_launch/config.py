@@ -8,7 +8,7 @@ CODE_DIRS_TO_MOUNT = [
     '/home/patrickhaoy/code_goalbisim/bullet-objects',
     '/home/patrickhaoy/code_goalbisim/dmc2gym',
     '/home/patrickhaoy/code_goalbisim/dm_control',
-    "/2tb/home/patrickhaoy/data_goalbisim/data/"
+    "/2tb/home/patrickhaoy/data_goalbisim/data_g/"
 ]
 NON_CODE_DIRS_TO_MOUNT = [
 ]
@@ -311,7 +311,7 @@ GCP_DEFAULT_KWARGS = dict(
     terminate=True,
     preemptible=True,  # is much more expensive!
     gpu_kwargs=dict(
-        gpu_model='nvidia-tesla-t4',
+        gpu_model='nvidia-tesla-k80',
         num_gpu=1,
     )
 )
